@@ -14,7 +14,7 @@
 			</router-link>
 			<router-link class="link" :to="{name:'three'}">
 				<div class="svg iconfont icon-gouwuche"></div>
-				<p>购物车</p>
+				<p>集市</p>
 			</router-link>
 			<router-link class="link" :to="{name:'me'}">
 				<div class="svg iconfont icon-user"></div>
