@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// 导入阿里图标
 import '../static/css/global.css'
 import '../static/font/iconfont'
 
