@@ -11,6 +11,20 @@ server.on('request', function (req, res) { // request请求 response返回响应
         'Access-Control-Allow-Origin': '*'
     });
     let data = {
+        indexHot:[
+            { 
+                id: 1, 
+                picHot: '../static/img/1.4dc0732.png'
+            },
+            { 
+                id: 2, 
+                picHot: '../static/img/2.e2eab8a.png'
+            },
+            { 
+                id: 3, 
+                picHot: '../static/img/3.fe55348.png'
+            }
+        ],
         banner: [
             { 
                 id: 1, 
@@ -101,6 +115,17 @@ server.on('request', function (req, res) { // request请求 response返回响应
             res.end(JSON.stringify(result));
         } else {
             res.end(JSON.stringify(data.banner));
+        }
+    } else if(pathName === '/indexHot'){
+        if(parseObj.query.id){
+            let id = parseObj.query.id;
+            let result = data.indexHot.find(function (item) {
+                return item.id == id;
+            })
+            console.log(result)
+            res.end(JSON.stringify(result));
+        } else {
+            res.end(JSON.stringify(data.indexHot));
         }
     }
 });
