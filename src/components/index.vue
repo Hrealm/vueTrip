@@ -58,20 +58,45 @@
             <div class="hotTravels">
                 <div class="title clearFix">
                     <p class="name fl">热门游记<i class="iconfont icon-remen"></i></p>
-                    <p class="more fr">查看全部<i>></i></p>
+                    <p class="more fr">查看全部<i class="iconfont icon-iconfontyoujiantou"></i></p>
                 </div>
                 <!-- 初始化图片，没有服务器的一种暴力解决方法 -->
                 <div style="display: none;">
                     <img src="../node/img/indexHot/1.png" alt="">
                     <img src="../node/img/indexHot/2.png" alt="">
                     <img src="../node/img/indexHot/3.png" alt="">
+
+                    <img src="../node/img/indexShare/1.jpg" alt="">
+                    <img src="../node/img/indexShare/2.jpg" alt="">
+                    <img src="../node/img/indexShare/3.jpg" alt="">
                 </div>
-                <ul>
+                <!-- 热门游记 -->
+                <ul class="hot">
                     <li v-for="(item,index) in hotImg" :key="index">
                         <img :src="item.picHot" alt="" width="100%" height="100%">
                     </li>
                 </ul>
-              
+                <!-- 游记分享 -->
+                <ul class="share">
+                    <li v-for="(item,index) in shareImg" :key="index">
+                        <img :src="item.picShare" alt="" width="100%" height="100%" v-lazy="item.picShare">
+                        <div class="descImg">
+                            <p class="location"><i class="iconfont icon-zuobiao"></i><span>{{item.location}}</span></p>
+                            <p class="descContent">{{item.descContent}}</p>
+                        </div>
+                        <!-- <div class="user">
+                            <p class="userName">
+                                <img src="" alt="">
+                            </p>
+                            <p class=like>
+                                <i class="comment"></i>
+                                <span></span>
+                                <i class="like"></i>
+                                <span></span>
+                            </p>
+                        </div> -->
+                    </li>
+                </ul>
             </div>
         </div>
         <!-- content -->
@@ -86,7 +111,8 @@ export default {
             location: '佛山',
             banner: 'banner',
             bannerImg: [],
-            hotImg:[]
+            hotImg:[],
+            shareImg:[]
 		}
 	},
     components: {},
@@ -99,6 +125,10 @@ export default {
         this.$ajax.get('http://localhost:6789/indexHot')
             .then((res)=>{
                 this.hotImg =res.data
+            })
+        this.$ajax.get('http://localhost:6789/indexShare')
+            .then((res)=>{
+                this.shareImg = res.data
             })
     }
 }
@@ -243,7 +273,7 @@ export default {
                     margin-left: 10/@rem;
                 }
             }
-            ul{
+            ul.hot{
                 display: flex;
                 width: 100%;
                 flex-direction: row;
@@ -255,6 +285,51 @@ export default {
                        border-radius: 10/@rem; 
                     }
                 }
+            }
+            ul.share{
+                width: 100%;
+                margin-top: 20/@rem;
+                padding-bottom: 100/@rem;
+                li{
+                    position: relative;
+                    width: 100%;
+                    height: 350/@rem;
+                    margin-bottom: 20/@rem;
+                    img{
+                        border-radius: 10/@rem;
+                    }
+                    .descImg{
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        height: 90/@rem;
+                        background: linear-gradient(transparent,#000);
+                        opacity: 0.9;
+                        z-index: 5;
+                        font-size: 32/@rem;
+                        color: white;
+                        font-weight: 500;
+                        border-radius: 10/@rem;
+                        .location{
+                            position: absolute;
+                            left: 30/@rem;
+                            bottom: 15/@rem;
+                            i{
+                                font-size: 32/@rem;
+                            }
+                            span{
+                                margin-left: 15/@rem;
+                                font-size: 30/@rem;
+                            }
+                        }
+                        .descContent{
+                            position: absolute;
+                            right: 20/@rem;
+                            bottom: 15/@rem;
+                        }
+                    }
+                }
+
             }
             
         }

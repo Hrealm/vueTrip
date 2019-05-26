@@ -11,6 +11,38 @@ server.on('request', function (req, res) { // request请求 response返回响应
         'Access-Control-Allow-Origin': '*'
     });
     let data = {
+        indexShare:[
+            {
+                id: 1,
+                picShare: '../static/img/1.41fb8a7.jpg',
+                location: '西藏',
+                descContent: '一个离天堂最近的地方',
+                picUser: '',
+                userName: '',
+                comment: 0,
+                like: 0
+            },
+            {
+                id: 2,
+                picShare: '../static/img/2.b1bd8e2.jpg',
+                location: '内蒙',
+                descContent: '手抓羊排',
+                picUser: '',
+                userName: '',
+                comment: 0,
+                like: 0
+            },
+            {
+                id: 3,
+                picShare: '../static/img/3.9baa361.jpg',
+                location: '青海',
+                descContent: '天空之境',
+                picUser: '',
+                userName: '',
+                comment: 0,
+                like: 0
+            }
+        ],
         indexHot:[
             { 
                 id: 1, 
@@ -38,74 +70,11 @@ server.on('request', function (req, res) { // request请求 response返回响应
                 id: 3, 
                 picUrl: '../static/img/3.65aee88.jpg'
             }
-        ],
-        users: [
-            {
-                id: 1,
-                name: '追梦',
-                age: 18,
-            },
-            {
-                id: 2,
-                name: '阿飞',
-                age: 18,
-            },
-            {
-                id: 3,
-                name: '乌拉',
-                age: 18,
-            },
-            {
-                id: 4,
-                name: '风屿',
-                age: 18,
-            }
-        ],
-        jobs: [
-            {
-                id: 1,
-                name: '正直的男人'
-            },
-            {
-                id: 2,
-                name: '结婚的男人'
-            },
-            {
-                id: 3,
-                name: '很漂亮的妹子'
-            },
-            {
-                id: 4,
-                name: '很骚情的男人'
-            }
         ]
 
     }
 
-    if (pathName === '/users') {
-        // console.log('用户列表')
-        if (parseObj.query.id) {
-            let id = parseObj.query.id;
-            let result = data.users.find(function (item) {
-                return item.id == id;
-            })
-            console.log(result)
-            res.end(JSON.stringify(result));
-        } else {
-            res.end(JSON.stringify(data.users));
-        }
-    } else if (pathName === '/jobs') {
-        if (parseObj.query.id) {
-            let id = parseObj.query.id;
-            let result = data.jobs.find(function (item) {
-                return item.id == id;
-            })
-            console.log(result)
-            res.end(JSON.stringify(result));
-        } else {
-            res.end(JSON.stringify(data.jobs));
-        }
-    } else if(pathName === '/banner'){
+    if(pathName === '/banner'){
         if(parseObj.query.id){
             let id = parseObj.query.id;
             let result = data.banner.find(function (item) {
@@ -126,6 +95,17 @@ server.on('request', function (req, res) { // request请求 response返回响应
             res.end(JSON.stringify(result));
         } else {
             res.end(JSON.stringify(data.indexHot));
+        }
+    } else if(pathName === '/indexShare'){
+        if(parseObj.query.id){
+            let id = parseObj.query.id;
+            let result = data.indexShare.find(function (item) {
+                return item.id == id;
+            })
+            console.log(result)
+            res.end(JSON.stringify(result));
+        } else {
+            res.end(JSON.stringify(data.indexShare));
         }
     }
 });

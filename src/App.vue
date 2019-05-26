@@ -63,7 +63,7 @@ export default {
 @tabbar-bg: #fafafa;
 .ft {
 	position: fixed;
-	bottom: 0;
+	bottom: -1/@rem;
 	left: 0;
 	right: 0;
 	height: 100 / @rem;
@@ -72,7 +72,8 @@ export default {
 	justify-content: space-around;
 	text-align: center;
 	border-top: 1px solid @tabbar-bg * 0.9;
-	background-color: @tabbar-bg;
+    background-color: @tabbar-bg;
+    z-index: 999;
 	.link {
 		flex: 1;
 		line-height: 70 / @rem;
