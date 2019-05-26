@@ -11,7 +11,24 @@ server.on('request', function (req, res) { // request请求 response返回响应
         'Access-Control-Allow-Origin': '*'
     });
     let data = {
-        indexShare:[
+        findTabItem: [
+            {
+                id: 1,
+                title: '推荐',
+                tip: 'recommend'
+            },
+            {
+                id: 2,
+                title: '热门',
+                tip: 'findHot'
+            },
+            {
+                id: 3,
+                title: '关注',
+                tip: 'follow'
+            }
+        ],
+        indexShare: [
             {
                 id: 1,
                 picShare: '../static/img/1.41fb8a7.jpg',
@@ -36,78 +53,76 @@ server.on('request', function (req, res) { // request请求 response返回响应
                 id: 3,
                 picShare: '../static/img/3.9baa361.jpg',
                 location: '青海',
-                descContent: '天空之境',
+                descContent: '天空之镜',
                 picUser: '',
                 userName: '',
                 comment: 0,
                 like: 0
             }
         ],
-        indexHot:[
-            { 
-                id: 1, 
+        indexHot: [
+            {
+                id: 1,
                 picHot: '../static/img/1.4dc0732.png'
             },
-            { 
-                id: 2, 
+            {
+                id: 2,
                 picHot: '../static/img/2.e2eab8a.png'
             },
-            { 
-                id: 3, 
+            {
+                id: 3,
                 picHot: '../static/img/3.fe55348.png'
             }
         ],
         banner: [
-            { 
-                id: 1, 
+            {
+                id: 1,
                 picUrl: '../static/img/1.22a4b42.jpg'
             },
-            { 
-                id: 2, 
+            {
+                id: 2,
                 picUrl: '../static/img/2.ea782e8.jpg'
             },
-            { 
-                id: 3, 
+            {
+                id: 3,
                 picUrl: '../static/img/3.65aee88.jpg'
             }
         ]
 
     }
 
-    if(pathName === '/banner'){
-        if(parseObj.query.id){
+    switch (pathName) {
+        case '/banner':
+            var route = 'banner';
+            reJson(route);
+            break;
+        case '/indexHot':
+            var route = 'indexHot';
+            reJson(route);
+            break;
+        case '/indexShare':
+            var route = 'indexShare';
+            reJson(route);
+            break;
+        case '/findTabItem':
+            var route = 'findTabItem';
+            reJson(route);
+            break;
+        default:
+            break;
+    }
+    function reJson(route) {
+        if (parseObj.query.id) {
             let id = parseObj.query.id;
-            let result = data.banner.find(function (item) {
+            let result = data[route].find(function (item) {
                 return item.id == id;
             })
-            console.log(result)
             res.end(JSON.stringify(result));
         } else {
-            res.end(JSON.stringify(data.banner));
-        }
-    } else if(pathName === '/indexHot'){
-        if(parseObj.query.id){
-            let id = parseObj.query.id;
-            let result = data.indexHot.find(function (item) {
-                return item.id == id;
-            })
-            console.log(result)
-            res.end(JSON.stringify(result));
-        } else {
-            res.end(JSON.stringify(data.indexHot));
-        }
-    } else if(pathName === '/indexShare'){
-        if(parseObj.query.id){
-            let id = parseObj.query.id;
-            let result = data.indexShare.find(function (item) {
-                return item.id == id;
-            })
-            console.log(result)
-            res.end(JSON.stringify(result));
-        } else {
-            res.end(JSON.stringify(data.indexShare));
+            res.end(JSON.stringify(data[route]));
         }
     }
+
 });
 
 server.listen(6789, function () {

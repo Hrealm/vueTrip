@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../components/index'
+import Find from '../components/find/find'
 
-import One from '../components/one'
-import Two from '../components/two'
 import Three from '../components/three'
 import Me from '../components/me'
 
@@ -32,9 +31,9 @@ export default new Router({
             component: Index
         },
         {
-            path: '/two',
-            name: 'two',
-            component: Two
+            path: '/find',
+            name: 'find',
+            component: Find
         },
         {
             path: '/three',

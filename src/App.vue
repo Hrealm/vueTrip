@@ -8,7 +8,7 @@
 				<div class="svg iconfont icon-yemian-copy-copy-copy"></div>
 				<p>首页</p>
 			</router-link>
-			<router-link class="link" :to="{name:'two'}">
+			<router-link class="link" :to="{name:'find'}">
 				<div class="svg iconfont icon-faxian"></div>
 				<p>发现</p>
 			</router-link>
