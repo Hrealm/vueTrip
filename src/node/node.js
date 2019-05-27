@@ -11,21 +11,32 @@ server.on('request', function (req, res) { // request请求 response返回响应
         'Access-Control-Allow-Origin': '*'
     });
     let data = {
-        findTabItem: [
+        banner: [
             {
                 id: 1,
-                title: '推荐',
-                tip: 'recommend'
+                picUrl: '../static/img/1.22a4b42.jpg'
             },
             {
                 id: 2,
-                title: '热门',
-                tip: 'findHot'
+                picUrl: '../static/img/2.ea782e8.jpg'
             },
             {
                 id: 3,
-                title: '关注',
-                tip: 'follow'
+                picUrl: '../static/img/3.65aee88.jpg'
+            }
+        ],
+        indexHot: [
+            {
+                id: 1,
+                picHot: '../static/img/1.4dc0732.png'
+            },
+            {
+                id: 2,
+                picHot: '../static/img/2.e2eab8a.png'
+            },
+            {
+                id: 3,
+                picHot: '../static/img/3.fe55348.png'
             }
         ],
         indexShare: [
@@ -60,35 +71,47 @@ server.on('request', function (req, res) { // request请求 response返回响应
                 like: 0
             }
         ],
-        indexHot: [
+        findTabItem: [
             {
                 id: 1,
-                picHot: '../static/img/1.4dc0732.png'
+                title: '推荐',
+                tip: 'recommend'
             },
             {
                 id: 2,
-                picHot: '../static/img/2.e2eab8a.png'
+                title: '热门',
+                tip: 'findHot'
             },
             {
                 id: 3,
-                picHot: '../static/img/3.fe55348.png'
+                title: '关注',
+                tip: 'follow'
             }
         ],
-        banner: [
+        recommend:[
             {
-                id: 1,
-                picUrl: '../static/img/1.22a4b42.jpg'
+                id:1,
+                userHead: '../static/img/realm.1d7063b.jpg',
+                userName: 'Hrealm',
+                userShare: ['../static/img/1.41fb8a7.jpg','../static/img/2.b1bd8e2.jpg','../static/img/3.9baa361.jpg'],
+                userTag:'茶卡盐湖天空壹号'
             },
             {
-                id: 2,
-                picUrl: '../static/img/2.ea782e8.jpg'
+                id:2,
+                userHead: '../static/img/realm.1d7063b.jpg',
+                userName: 'ECHO',
+                userShare: ['../static/img/1.41fb8a7.jpg','../static/img/2.b1bd8e2.jpg','../static/img/3.9baa361.jpg'],
+                userTag:'茶卡盐湖天空壹号'
             },
             {
-                id: 3,
-                picUrl: '../static/img/3.65aee88.jpg'
+                id:3,
+                userHead: '../static/img/realm.1d7063b.jpg',
+                userName: 'annie',
+                userShare: ['../static/img/1.41fb8a7.jpg','../static/img/2.b1bd8e2.jpg','../static/img/3.9baa361.jpg'],
+                userTag:'茶卡盐湖天空壹号'
             }
         ]
-
+        
     }
 
     switch (pathName) {
@@ -106,6 +129,10 @@ server.on('request', function (req, res) { // request请求 response返回响应
             break;
         case '/findTabItem':
             var route = 'findTabItem';
+            reJson(route);
+            break;
+        case '/recommend':
+            var route = 'recommend';
             reJson(route);
             break;
         default:

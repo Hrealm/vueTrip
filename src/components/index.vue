@@ -69,6 +69,8 @@
                     <img src="../node/img/indexShare/1.jpg" alt="">
                     <img src="../node/img/indexShare/2.jpg" alt="">
                     <img src="../node/img/indexShare/3.jpg" alt="">
+
+                    <img src="./find/realm.jpg" alt="">
                 </div>
                 <!-- 热门游记 -->
                 <ul class="hot">
@@ -117,16 +119,16 @@ export default {
 	},
     components: {},
     created(){
-        this.$ajax.get('http://localhost:6789/banner')
+        this.$ajax.get('banner')
             .then((res)=>{
                 // console.log(res.data)
                 this.bannerImg = res.data
             })
-        this.$ajax.get('http://localhost:6789/indexHot')
+        this.$ajax.get('indexHot')
             .then((res)=>{
                 this.hotImg =res.data
             })
-        this.$ajax.get('http://localhost:6789/indexShare')
+        this.$ajax.get('indexShare')
             .then((res)=>{
                 this.shareImg = res.data
             })

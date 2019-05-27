@@ -8,8 +8,12 @@ import Me from '../components/me'
 
 //导入插件axios 挂载属性 vue.prototype
 import Axios from 'axios'
+Axios.defaults.baseURL = 'http://localhost:6789/'
 Vue.prototype.$ajax = Axios
 
+//导入jQuery
+import $ from 'jquery'
+Vue.prototype.$ = $
 
 // 安装mint-ui组件库
 import Mint from 'mint-ui'
