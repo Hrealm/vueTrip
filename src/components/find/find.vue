@@ -32,7 +32,7 @@
 						<div class="userShare">
 							<mt-swipe :auto="0" class="shareImg">
 								<mt-swipe-item v-for="(item,index) in item.userShare" :key="index">
-									<img :src="item" width="100%" height="100%" alt>
+									<img :src="item" width="100%" height="100%" v-preview="item" alt="" v-lazy="item">
 								</mt-swipe-item>
 							</mt-swipe>
 						</div>
@@ -44,10 +44,52 @@
 				</ul>
 			</div>
 			<div class="conlist findHot">
-				<span>热门</span>
+				<ul>
+					<li v-for="(item,index) in findHot" :key="index">
+						<div class="userInfo clearFix">
+							<p class="fl">
+								<img :src="item.userHead" width="100%" height="100%" alt>
+								<span v-text="item.userName"></span>
+							</p>
+							<i class="fr iconfont icon-ic_song_like"></i>
+						</div>
+						<div class="userShare">
+							<mt-swipe :auto="0" class="shareImg">
+								<mt-swipe-item v-for="(item,index) in item.userShare" :key="index">
+									<img :src="item" width="100%" height="100%" v-preview="item" alt="" v-lazy="item">
+								</mt-swipe-item>
+							</mt-swipe>
+						</div>
+						<div class="tag clearFix">
+							<p class="fl tbActive" v-text="'#'+item.userTag+'#'"></p>
+							<i class="fr iconfont icon-liuyan"></i>
+						</div>
+					</li>
+				</ul>
 			</div>
 			<div class="conlist follow">
-				<span>关注</span>
+				<ul>
+					<li v-for="(item,index) in follow" :key="index">
+						<div class="userInfo clearFix">
+							<p class="fl">
+								<img :src="item.userHead" width="100%" height="100%" alt>
+								<span v-text="item.userName"></span>
+							</p>
+							<i class="fr iconfont icon-ic_song_like"></i>
+						</div>
+						<div class="userShare">
+							<mt-swipe :auto="0" class="shareImg">
+								<mt-swipe-item v-for="(item,index) in item.userShare" :key="index">
+									<img :src="item" width="100%" height="100%" v-preview="item" alt="" v-lazy="item">
+								</mt-swipe-item>
+							</mt-swipe>
+						</div>
+						<div class="tag clearFix">
+							<p class="fl tbActive" v-text="'#'+item.userTag+'#'"></p>
+							<i class="fr iconfont icon-liuyan"></i>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<!-- content -->
@@ -59,14 +101,21 @@ export default {
 	data() {
 		return {
 			tabNav: [],
-			recommend: []
+            recommend: [],
+            findHot: [],
+            follow: []
 		}
 	},
 	components: {},
 	created() {
-		this.$ajax.get('findTabItem').then(res => {
-			this.tabNav = res.data
-        })
+        {
+            this.$ajax.get('findTabItem')
+                .then(res => {
+			        this.tabNav = res.data
+            }).catch((err)=>{
+                console.log(err);
+            })
+        }
         this.getContent('recommend');
 	},
 	methods: {
@@ -74,7 +123,9 @@ export default {
 			this.$ajax.get(title).then(res => {
                 this[title] = res.data
                 this.tabActive();
-			})
+			}).catch((err)=>{
+                console.log(err);
+            })
 		},
 		tabActive() {
             let $tabItem = this.$('.topTab')
@@ -90,22 +141,6 @@ export default {
                     $conlist[this.index].style.display = 'block';
                 }
             }
-
-            // for(var i=0;i<$tabItem.length;i++){
-            //     $tabItem[i].index = i;
-            //     $tabItem[i].onclick = function(){
-            //         for(var i=0;i<$tabItem.length;i++){
-            //             $tabItem[i].className = '';
-            //             $conlist[i].style.display = 'none';
-            //         }
-            //         $tabItem[this.index].className = 'tbActive';
-            //         $conlist[this.index].style.display = 'block';
-            //     }
-            // }
-            // $tabItem.addClass('tbActive').siblings().removedClass('tbActive');
-            // console.log($tabItem);
-            // let tabItem = document.getElementsByClassName('tabItem')[0]
-            // console.log(tabItem);
             
         }
 	}

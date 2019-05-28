@@ -22,6 +22,7 @@
 			</router-link>
 		</footer>
 		<!-- footNav -->
+        <lg-preview></lg-preview>
 	</div>
 </template>
 

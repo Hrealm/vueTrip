@@ -88,30 +88,48 @@ server.on('request', function (req, res) { // request请求 response返回响应
                 tip: 'follow'
             }
         ],
-        recommend:[
+        recommend: [
             {
-                id:1,
-                userHead: '../static/img/realm.1d7063b.jpg',
+                id: 1,
+                userHead: '../static/img/head.1d7063b.jpg',
                 userName: 'Hrealm',
-                userShare: ['../static/img/1.41fb8a7.jpg','../static/img/2.b1bd8e2.jpg','../static/img/3.9baa361.jpg'],
-                userTag:'茶卡盐湖天空壹号'
+                userShare: ['../static/img/1.ad406fc.jpg', '../static/img/2.6e58b97.jpg', '../static/img/3.95d5b79.jpg', '../static/img/4.2f656bf.jpg'],
+                userTag: '云巅之上'
             },
             {
-                id:2,
-                userHead: '../static/img/realm.1d7063b.jpg',
+                id: 2,
+                userHead: '../static/img/head.fc933e2.jpg',
                 userName: 'ECHO',
-                userShare: ['../static/img/1.41fb8a7.jpg','../static/img/2.b1bd8e2.jpg','../static/img/3.9baa361.jpg'],
-                userTag:'茶卡盐湖天空壹号'
+                userShare: ['../static/img/1.003a1b6.jpg', '../static/img/2.6a4c60e.jpg', '../static/img/3.f967c6b.jpg', '../static/img/4.c0b84d5.jpg', '/static/img/5.dd5215e.jpg'],
+                userTag: '醉美青海'
             },
             {
-                id:3,
-                userHead: '../static/img/realm.1d7063b.jpg',
+                id: 3,
+                userHead: '../static/img/head.0f570cf.png',
                 userName: 'annie',
-                userShare: ['../static/img/1.41fb8a7.jpg','../static/img/2.b1bd8e2.jpg','../static/img/3.9baa361.jpg'],
-                userTag:'茶卡盐湖天空壹号'
+                userShare: ['../static/img/1.a0f22ee.jpg', '../static/img/2.094ba01.jpg', '../static/img/3.2048e81.jpg', '../static/img/4.884e751.jpg'],
+                userTag: '仙境翡翠湖'
+            }
+        ],
+        findHot: [
+            {
+                id: 1,
+                userHead: '../static/img/head.0f570cf.png',
+                userName: 'annie',
+                userShare: ['../static/img/1.a0f22ee.jpg', '../static/img/2.094ba01.jpg', '../static/img/3.2048e81.jpg', '../static/img/4.884e751.jpg'],
+                userTag: '仙境翡翠湖'
+            }
+        ],
+        follow: [
+            {
+                id: 1,
+                userHead: '../static/img/head.1d7063b.jpg',
+                userName: 'Hrealm',
+                userShare: ['../static/img/1.ad406fc.jpg', '../static/img/2.6e58b97.jpg', '../static/img/3.95d5b79.jpg', '../static/img/4.2f656bf.jpg'],
+                userTag: '云巅之上'
             }
         ]
-        
+
     }
 
     switch (pathName) {
@@ -133,6 +151,14 @@ server.on('request', function (req, res) { // request请求 response返回响应
             break;
         case '/recommend':
             var route = 'recommend';
+            reJson(route);
+            break;
+        case '/findHot':
+            var route = 'findHot';
+            reJson(route);
+            break;
+        case '/follow':
+            var route = 'follow';
             reJson(route);
             break;
         default:

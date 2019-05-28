@@ -20,6 +20,14 @@ import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(Mint)
 
+//懒加载
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
+//图片预览插件+扩展
+import vuePicturePreview from 'vue-picture-preview-extend'
+Vue.use(vuePicturePreview)
+
 Vue.use(Router)
 
 export default new Router({
