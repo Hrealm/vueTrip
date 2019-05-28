@@ -4,8 +4,7 @@
 
 ## 部分截图
 
-![首页](src/node/img/result/1.jpg = 300x532)![首页](src/node/img/result/2.jpg = 300x532)
-![首页](src/node/img/result/3.jpg = 300x532)![首页](src/node/img/result/4.jpg = 300x532)
+<img src="src/node/img/result/1.jpg" width="50%" height="50%"/><img src="src/node/img/result/2.jpg" width="50%" height="50%"/>
 
 
 
