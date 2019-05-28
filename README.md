@@ -4,7 +4,7 @@
 
 ## 部分截图
 
-<img src="src/node/img/result/1.jpg" width="30%" height="30%"/>    <img src="src/node/img/result/2.jpg" width="30%" height="30%"/>
+<img src="src/node/img/result/1.jpg" width="30%" height="30%"/>&nbsp&nbsp&nbsp<img src="src/node/img/result/2.jpg" width="30%" height="30%"/>
 
 
 
