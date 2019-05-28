@@ -1,6 +1,14 @@
 # sparrow-app
 
-> A Vue.js project
+> A  super simple flat style trip app
+
+## 部分截图
+
+![](node\img\result\1.jpg)
+
+
+
+
 
 ## Build Setup
 
