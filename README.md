@@ -4,7 +4,7 @@
 
 ## 部分截图
 
-![](node\img\result\1.jpg)
+![首页](src/node/img/result/1.jpg)
 
 
 
