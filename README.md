@@ -1,7 +1,9 @@
 # sparrow-app
 
 > 未完，正在努力更新中...
+>
 > 由于服务器过期，临时采用node搭建本地服务器提供后台数据接口
+>
 > A  super simple flat style trip app
 
 ## 部分截图
