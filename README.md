@@ -12,7 +12,7 @@
 
 <img src="src/node/img/result/3.jpg" width="30%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/4.jpg" width="30%" height="30%"/>
 
-<img src="src/node/img/result/5.jpg" width="30%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/6.jpg" width="30%" height="30%"/>
+<img src="src/node/img/result/5.jpg" width="29%" height="29%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/6.jpg" width="29%" height="29%"/>
 
 ## Build Setup
 
