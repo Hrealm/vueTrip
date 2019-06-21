@@ -3,7 +3,7 @@
 		<router-view/>
 
 		<!-- footNav -->
-		<footer class="ft">
+		<footer class="ft" v-if="isIndex">
 			<router-link class="link" :to="{name:'index'}">
 				<div class="svg iconfont icon-yemian-copy-copy-copy"></div>
 				<p>首页</p>
@@ -21,16 +21,20 @@
 				<p>我</p>
 			</router-link>
 		</footer>
-		<!-- footNav -->
+
+        <!-- 图片预览 -->
         <lg-preview></lg-preview>
 	</div>
 </template>
 
 <script>
+import connect from './components/common/connect'
 export default {
 	name: 'App',
 	data() {
-		return {}
+		return {
+            isIndex : false
+        }
 	},
 	computed: {},
 	created() {
@@ -41,7 +45,10 @@ export default {
 			var nowWidth = html.getBoundingClientRect().width
 			if (nowWidth >= 750) nowWidth = 750
 			html.style.fontSize = nowWidth / 10 + 'px'
-		}
+        }
+        connect.$on('isIndex',(result)=>{
+            this.isIndex = result
+        })
 	}
 }
 </script>

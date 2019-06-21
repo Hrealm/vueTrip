@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import TitleBar from '../components/common/titleBar'
 import Index from '../components/index'
 import Find from '../components/find/find'
-
 import Three from '../components/three'
 import Me from '../components/me'
+import shopList from '../components/shops/shopList'
+
+
+//安装全局组件
+Vue.component('titleBar',TitleBar)
 
 //导入插件axios 挂载属性 vue.prototype
 import Axios from 'axios'
@@ -56,6 +61,11 @@ export default new Router({
             path: '/me',
             name: 'me',
             component: Me
+        },
+        {
+            path: '/phops/list',
+            name: 'phot.list',
+            component: shopList
         },
     ]
 })

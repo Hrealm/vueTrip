@@ -16,7 +16,7 @@
 
 		<!-- banner -->
         <!-- 初始化图片，没有服务器的一种暴力解决方法 -->
-         <div style="display: none;">
+        <div style="display: none;">
              <!-- index -->
             <img src="../node/img/banner/1.jpg" alt="">
             <img src="../node/img/banner/2.jpg" alt="">
@@ -64,8 +64,10 @@
                 <i class="svg2 iconfont icon-gonglve tbActive"></i>
             </div>
             <div class="item">
-                <p>商铺</p>
-                <i class="svg3 iconfont icon-shangpucopy tbActive"></i>
+                <router-link class="navBtn" @click.native="isIndex" :to="{name:'phot.list'}">
+                    <p>商铺</p>
+                    <i class="svg3 iconfont icon-shangpucopy tbActive"></i>
+                </router-link>
             </div>
             <div class="item">
                 <p>文化</p>
@@ -120,6 +122,7 @@
 </template>
 
 <script>
+import connect from './common/connect'
 export default {
 	data() {
 		return {
@@ -129,7 +132,12 @@ export default {
             hotImg:[],
             shareImg:[]
 		}
-	},
+    },
+    methods:{
+        isIndex(){
+            connect.$emit('isIndex',false)
+        }
+    },
     components: {},
     created(){
         this.$ajax.get('banner')
@@ -145,6 +153,7 @@ export default {
             .then((res)=>{
                 this.shareImg = res.data
             })
+        connect.$emit('isIndex',true)
     }
 }
 </script>
@@ -227,8 +236,14 @@ export default {
             text-align: center;
             border-radius: 5px;
             box-shadow: 0px 3px 8px #F5F4F9;
+            .navBtn{
+                display: block;
+                width: 100%;
+                height: 100%;
+                color: inherit; // #2c3e50
+            }
             p{
-                margin-top: 15/@rem;
+                padding-top: 15/@rem;
             }
             i{
                 position: absolute;
