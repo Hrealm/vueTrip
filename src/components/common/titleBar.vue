@@ -11,7 +11,6 @@
                 <i class="iconfont icon-sousuo"></i>
 			    <span>{{title}}</span>
             </div>
-			
 		</header>
 	</div>
 </template>
