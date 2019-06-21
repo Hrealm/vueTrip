@@ -97,6 +97,7 @@
 </template>
 
 <script>
+import connect from '../common/connect'
 export default {
 	data() {
 		return {
@@ -117,6 +118,7 @@ export default {
             })
         }
         this.getContent('recommend');
+        connect.$emit('isIndex',true);
 	},
 	methods: {
 		getContent(title) {
