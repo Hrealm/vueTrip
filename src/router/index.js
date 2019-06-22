@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import TitleBar from '../components/common/titleBar'
 import Index from '../components/index'
 import Find from '../components/find/find'
-import Three from '../components/three'
+import Market from '../components/market'
 import Me from '../components/me'
 import shopList from '../components/shops/shopList'
 
@@ -53,9 +53,9 @@ export default new Router({
             component: Find
         },
         {
-            path: '/three',
-            name: 'three',
-            component: Three
+            path: '/market',
+            name: 'market',
+            component: Market
         },
         {
             path: '/me',

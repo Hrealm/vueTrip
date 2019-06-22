@@ -45,7 +45,8 @@ export default {
 		height: 95 / @rem;
 		line-height: 95 / @rem;
 		padding: 0 75/4 / @rem;
-		background-color: white;
+        background-color: white;
+        border-bottom: 0.5px solid #f5f5f9;
 		z-index: 996;
 		font-size: 32 / @rem;
 		i {

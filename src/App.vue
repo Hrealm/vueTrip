@@ -12,8 +12,8 @@
 				<div class="svg iconfont icon-faxian"></div>
 				<p>发现</p>
 			</router-link>
-			<router-link class="link" :to="{name:'three'}">
-				<div class="svg iconfont icon-gouwuche"></div>
+			<router-link class="link" :to="{name:'market'}">
+				<div class="svg iconfont icon-gouwuche"><i class="showNum" v-if="pickNum">{{pickNum}}</i></div>
 				<p>集市</p>
 			</router-link>
 			<router-link class="link" :to="{name:'me'}">
@@ -33,7 +33,8 @@ export default {
 	name: 'App',
 	data() {
 		return {
-            isIndex : false
+            isIndex : false,
+            pickNum : 66
         }
 	},
 	computed: {},
@@ -79,7 +80,7 @@ export default {
 	flex-direction: row;
 	justify-content: space-around;
 	text-align: center;
-	border-top: 1px solid @tabbar-bg * 0.9;
+	border-top: 1px solid #f5f5f9;
     background-color: @tabbar-bg;
     z-index: 999;
 	.link {
@@ -96,6 +97,19 @@ export default {
 		color: inherit;
 		font-size: 24 / @rem;
 		line-height: 1;
-	}
+    }
+    .showNum{
+        position: absolute;
+        margin-top: 5/@rem;
+        width: 30/@rem;
+        height: 30/@rem;
+        line-height: 30/@rem;
+        text-align: center;
+        background-color: #EC5D29;
+        border-radius: 50%;
+        color: white;
+        font-size: 12 /@rem;
+        font-style: normal;
+    }
 }
 </style>
