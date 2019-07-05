@@ -5,7 +5,8 @@ import Index from '../components/index'
 import Find from '../components/find/find'
 import Market from '../components/market'
 import Me from '../components/me'
-import shopList from '../components/shops/shopList'
+import ShopList from '../components/shops/shopList'
+import ShopDetails from '../components/shops/shopDetails'
 
 
 //安装全局组件
@@ -14,6 +15,7 @@ Vue.component('titleBar',TitleBar)
 //导入插件axios 挂载属性 vue.prototype
 import Axios from 'axios'
 Axios.defaults.baseURL = 'http://localhost:6789/'
+// Axios.defaults.baseURL = 'http://10.4.135.143:6789/'
 Vue.prototype.$ajax = Axios
 
 //导入jQuery
@@ -63,9 +65,14 @@ export default new Router({
             component: Me
         },
         {
-            path: '/phops/list',
-            name: 'phot.list',
-            component: shopList
+            path: '/shops/list',
+            name: 'shops.list',
+            component: ShopList
         },
+        {
+            path: '/shops/list/shopDetails',
+            name: 'shops.shopDetails',
+            component: ShopDetails
+        }
     ]
 })

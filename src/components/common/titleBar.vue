@@ -41,7 +41,6 @@ export default {
 		top: 0;
 		left: 0;
 		right: 0;
-		bottom: 0;
 		height: 95 / @rem;
 		line-height: 95 / @rem;
 		padding: 0 75/4 / @rem;

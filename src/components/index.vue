@@ -64,7 +64,7 @@
                 <i class="svg2 iconfont icon-gonglve tbActive"></i>
             </div>
             <div class="item">
-                <router-link class="navBtn" @click.native="isIndex" :to="{name:'phot.list'}">
+                <router-link class="navBtn" @click.native="isIndex" :to="{name:'shops.list'}">
                     <p>商铺</p>
                     <i class="svg3 iconfont icon-shangpucopy tbActive"></i>
                 </router-link>

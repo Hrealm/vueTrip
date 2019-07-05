@@ -15,14 +15,14 @@
         <section class="likeYou">
             <ul>
                 <li v-for="(item,index) in shopLists" :key="index">
-                    <a href="javascript:;">
+                    <router-link :to="{name:'shops.shopDetails'}">
                         <div class="pic"><img :src="item.imgUrl" alt="" width="100%" height="100%" v-lazy="item.imgUrl"></div>
                         <p class="des" v-text="item.des || '数据请求失败...'"></p>
                         <div class="priceInfo clearFix">
                             <div class="fl shopPrice"><span v-text="item.symbol"></span><span v-text="item.price || 'NaN'"></span></div>
                             <div class="fr alreadyPaid" v-text="item.alreadyPaid"></div>
                         </div>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </section>
