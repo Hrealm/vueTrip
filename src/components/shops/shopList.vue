@@ -15,7 +15,7 @@
         <section class="likeYou">
             <ul>
                 <li v-for="(item,index) in shopLists" :key="index">
-                    <router-link :to="{name:'shops.shopDetails'}">
+                    <router-link :to="{name:'shops.shopDetails', query:{id:(index+1),title:'likeYou'}}">
                         <div class="pic"><img :src="item.imgUrl" alt="" width="100%" height="100%" v-lazy="item.imgUrl"></div>
                         <p class="des" v-text="item.des || '数据请求失败...'"></p>
                         <div class="priceInfo clearFix">
