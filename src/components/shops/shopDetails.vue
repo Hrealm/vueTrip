@@ -50,9 +50,18 @@
 					</li>
 				</ul>
 			</div>
-			<div class="select"><p class="clearFix"><span class="fl">选择</span><i class="fr iconfont icon-iconfontyoujiantou"></i>
-                <span class="selected">请选择分类</span></p></div>
-            <div class="buy"></div>
+			<div class="buyNum clearFix">
+                <p class="fl buyCount">购买数量</p>
+                <p class="fr addNum">
+                    <a href="javascript:;" :class="{activeReduce: isActive}" class="reduce" @click="shopReduce">-</a>
+                    <a href="javascript:;" class="num">{{num}}</a>
+                    <a href="javascript:;" class="add" @click="shopAdd">+</a>
+                </p>
+            </div>
+            <div class="buy">
+                <a href="javascript:;" class="addCart">加入购物车</a>
+                <a href="javascript:;" class="nowBuy">立即购买</a>
+            </div>
 		</div>
 	</div>
 </template>
@@ -61,7 +70,9 @@
 export default {
 	data() {
 		return {
-			shopDetails: {}
+            shopDetails: {},
+            num: 1,
+            isActive: false
 		}
 	},
 	created() {
@@ -78,7 +89,15 @@ export default {
 	methods: {
 		goBack() {
 			this.$router.go(-1)
-		}
+        },
+        shopReduce(){
+            if(this.num>1) this.num--;
+            if(this.num==1) this.isActive=false;
+        },
+        shopAdd(){
+            this.num++;
+            if(this.num>1) this.isActive=true;
+        }
 	},
 	components: {}
 }
@@ -180,24 +199,69 @@ export default {
 				}
 			}
         }
-        .select{
+        .buyNum{
             margin-top: 25 /@rem;
             background-color: white;
             padding: 20 /@rem 75/4 /@rem;
             font-size: 28 /@rem;
-            color: #999;
-            text-align: start;
-            p{
-                line-height: 39 /@rem;
-                i{
-                    font-size: 26 / @rem;
+            .buyCount{
+                color: #333;
+            }
+            .addNum{
+                font-size: 0;
+                a{
+                    display: inline-block;
+                    width: 45 /@rem;
+                    height: 39 /@rem;
+                    line-height: 39 /@rem;
+                    font-size: 28 /@rem;
+                    background-color: #F5F5F5;
                 }
-                .selected{
-                    margin-left: 45 / @rem;
-                    color: #333;
+                .reduce{
+                    color: #C9C9C9;
+                    background-color: #F9F9F9;
+                }
+                .activeReduce{
+                    color: #999;
+                    background-color: #F5F5F5;
+                }
+                .num{
+                    margin: 0 10 /@rem;
+                    color: #3E4144;
+                }
+                .add{
+                    color: #999;
                 }
             }
-            
+        }
+        .buy{
+            // position: fixed;
+            // left: 0;
+            // right: 0;
+            // bottom: 0;
+            padding: 10/@rem 75/4 /@rem 15/@rem;
+            background-color: white;
+            font-size: 0;
+            .addCart{
+                display: inline-block;
+                font-size: 32 /@rem;
+                width: 50%;
+                height: 80  /@rem;
+                line-height: 80/@rem;
+                background: linear-gradient(to right, #F7CC45, #F09937);
+                color: #fff;
+                border-radius: 30px 0 0 30px;
+            }
+            .nowBuy{
+                display: inline-block;
+                font-size: 32 /@rem;
+                width: 50%;
+                height: 80/@rem;
+                line-height: 80/@rem;
+                background: linear-gradient(to right, #EE7F30, #EB5828);
+                color: #fff;
+                border-radius: 0 30px 30px 0;
+            }
         }
 	}
 }
