@@ -16,7 +16,8 @@
     "vue": "^2.5.2",
     "vue-lazyload": "^1.2.6",
     "vue-picture-preview-extend": "^1.0.3",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

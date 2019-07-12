@@ -4,9 +4,14 @@
 		<header></header>
 		<header class="hd">
 			<span class="fl shopCart">购物车</span>
-			<span class="fr">管理</span>
+			<span class="fr" @click="manage" v-text="this.manages ? '管理' : '完成'"></span>
 		</header>
 		<!-- section -->
+        <section>
+            <div>
+
+            </div>
+        </section>
 
 		<!-- footer -->
 		<footer class="totalPrice">
@@ -24,13 +29,38 @@
 
 <script>
 import connect from './common/connect'
+import shopTools from './common/shopTools'
 export default {
 	data() {
-		return {}
+		return {
+            manages : true,
+            shopList: []
+        }
 	},
-	components: {},
+    components: {},
+    methods:{
+        manage(){
+            this.manages = !this.manages;
+        }
+    },
 	created() {
-		connect.$emit('isIndex', true)
+        connect.$emit('isIndex', true);
+        let shop = shopTools.getShop();
+        let idArr = Object.keys(shop);
+        let title = this.$route.query.title || 'likeYou'
+        idArr.forEach((item,index)=>{
+            let url ='http://tanzhouweb.com/vueProject/vue.php' + '?title=' + title + item
+            this.$ajax.get(url).then((res)=>{
+                    this.shopList.push(res.data);
+                    this.shopList.forEach((item,index)=>{
+                        //给shopList的 item添加属性num 
+                        this.$set(item,'num',shop[item.id]);
+                    })
+                })
+        })
+        // console.log(this.shopList);
+
+
 	}
 }
 </script>

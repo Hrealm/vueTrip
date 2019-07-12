@@ -8,6 +8,25 @@ import router from './router'
 import '../static/css/global.css'
 import '../static/font/iconfont'
 
+// 导入vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+let store = new Vuex.Store({
+    state: {
+        num: 0
+    },
+    mutations:{
+        addCartCount(state){
+            state.num++
+        },
+        reduceCartCount(state){
+            state.num--
+        }
+    }
+})
+
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

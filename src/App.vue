@@ -29,12 +29,13 @@
 
 <script>
 import connect from './components/common/connect'
+import shopTools from './components/common/shopTools'
 export default {
 	name: 'App',
 	data() {
 		return {
             isIndex : false,
-            pickNum : 66
+            pickNum : shopTools.getShopCount()
         }
 	},
 	computed: {},
@@ -49,6 +50,9 @@ export default {
         }
         connect.$on('isIndex',(result)=>{
             this.isIndex = result
+        })
+        connect.$on('addCart',(num)=>{
+            this.pickNum += num;
         })
 	}
 }

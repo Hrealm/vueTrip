@@ -59,14 +59,17 @@
                 </p>
             </div>
             <div class="buy">
-                <a href="javascript:;" class="addCart">加入购物车</a>
-                <a href="javascript:;" class="nowBuy">立即购买</a>
+                <a href="javascript:;" class="addCart" @click="addCart">加入购物车</a>
+                <router-link :to="{name:'market',query:{title:'likeYou'}}" class="nowBuy">立即购买</router-link>
             </div>
 		</div>
 	</div>
 </template>
 
 <script>
+import shopTools from '../common/shopTools'
+import connect from '../common/connect'
+import {Toast} from 'mint-ui'
 export default {
 	data() {
 		return {
@@ -81,6 +84,7 @@ export default {
 			let title = this.$route.query.title
 			let url ='http://tanzhouweb.com/vueProject/vue.php' + '?title=' + title + index
 			this.$ajax.get(url).then(res => {
+                res.data['id'] = index;
 				this.shopDetails = res.data
 				// console.log(res.data);
 			})
@@ -95,8 +99,20 @@ export default {
             if(this.num==1) this.isActive=false;
         },
         shopAdd(){
-            this.num++;
+            if(this.num<99) this.num++;
             if(this.num>1) this.isActive=true;
+        },
+        addCart(){
+            connect.$emit('addCart',this.num)
+            shopTools.addUpdate({
+                id : this.shopDetails.id,
+                num : this.num
+            })
+            Toast({
+                message: '添加成功',
+                position: 'bottom',
+                duration: 3000
+            });
         }
 	},
 	components: {}
