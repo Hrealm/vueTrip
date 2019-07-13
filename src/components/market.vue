@@ -4,12 +4,33 @@
 		<header></header>
 		<header class="hd">
 			<span class="fl shopCart">购物车</span>
-			<span class="fr" @click="manage" v-text="this.manages ? '管理' : '完成'"></span>
+			<span class="fr tbActive" @click="manage" v-text="this.isRemove ? '完成' : '管理'"></span>
 		</header>
 		<!-- section -->
         <section>
-            <div>
-
+            <div class="content">
+                <ul>
+                    <li v-for="(item,index) in shopList" :key="index">
+                        <div class="shop clearFix">
+                            <div class="pic fl"><img :src="item.imgUrl" alt="" width="100%" height="100%"></div>
+                            <div class="remove fr" v-if="isRemove"><i class="iconfont icon-lajitong"></i></div>
+                            <div class="shopInfo">
+                                <p class="desc" v-text="item.des || '请求数据失败'"></p>
+                                <div class="priceInfo clearFix">
+                                    <p class="fl money">
+                                        <span class="symbol" v-text="item.symbol || '¥'"></span>
+                                        <span class="price" v-text="item.price || 'NaN'"></span>
+                                    </p>
+                                    <p class="fr addNum">
+                                        <a href="javascript:;" class="reduce" @click="reduce({id:item.id,num:-1})">-</a>
+                                        <a href="javascript:;" class="num">{{item.num}}</a>
+                                        <a href="javascript:;" class="add" @click="addCount">+</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -33,20 +54,28 @@ import shopTools from './common/shopTools'
 export default {
 	data() {
 		return {
-            manages : true,
-            shopList: []
+            shopList: [],
+            isRemove: false
         }
 	},
     components: {},
     methods:{
         manage(){
-            this.manages = !this.manages;
+            this.isRemove = !this.isRemove;
+        },
+        reduce(shop){
+            shopTools.addUpdate(shop);
+            console.log(shopTools.addUpdate(shop));
+            
+        },
+        addCount(){
+
         }
     },
 	created() {
         connect.$emit('isIndex', true);
         let shop = shopTools.getShop();
-        let idArr = Object.keys(shop);
+        let idArr = Object.keys(shop);  // es6 遍历得到keys
         let title = this.$route.query.title || 'likeYou'
         idArr.forEach((item,index)=>{
             let url ='http://tanzhouweb.com/vueProject/vue.php' + '?title=' + title + item
@@ -58,7 +87,7 @@ export default {
                     })
                 })
         })
-        // console.log(this.shopList);
+        console.log(this.shopList);
 
 
 	}
@@ -96,7 +125,72 @@ export default {
 			font-size: 36 / @rem;
 			font-weight: 500;
 		}
-	}
+    }
+    .content{
+        margin-top: 20 /@rem;
+        ul li{
+            width: 100%;
+            border-radius: 10 / @rem;
+			box-shadow: 0px 1px 10px #e8e6e9;
+            margin-bottom: 25 / @rem;
+            font-size: 32 /@rem;
+            background-color: white;
+            .shop{
+                padding: 15 /@rem;
+                .pic{
+                    width:180 /@rem;
+                    height:180 /@rem;
+                    margin-right: 20 /@rem;
+                    img{
+                        border-radius: 5 /@rem;
+                    }
+                }
+                .shopInfo{
+                    text-align: start;
+                    .desc{
+                        height: 100/@rem;
+                        font-size: 28 /@rem;
+                    }
+                    .priceInfo{
+                        margin-top: 35 /@rem;
+                        .money{
+                            color: #FF5000;
+                        }
+                        .addNum{
+                            border: 1px solid #EBEBEB;
+                            font-size: 0;
+                            border-radius: 10 /@rem;
+                            a{
+                                display: inline-block;
+                                width: 50 /@rem;
+                                height: 38 /@rem;
+                                line-height: 38/@rem;
+                                font-size: 30 /@rem;
+                                text-align: center;
+                                color: #999;
+                            }
+                            .num{
+                                width: 60 /@rem;
+                                border-left: 1px solid #EBEBEB;
+                                border-right: 1px solid #EBEBEB;
+                            }
+                        }
+                    }
+                }
+                .remove{
+                    height: 180 /@rem;
+                    line-height: 180/@rem;
+                    margin-left: 15 /@rem;
+                    i{
+                        font-size: 60 /@rem;
+                        color: #EA792F;
+                    }
+                }
+            }
+        }
+    }
+
+
 	.totalPrice {
 		position: fixed;
 		bottom: 100 / @rem;
