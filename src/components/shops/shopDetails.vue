@@ -60,7 +60,7 @@
             </div>
             <div class="buy">
                 <a href="javascript:;" class="addCart" @click="addCart">加入购物车</a>
-                <router-link :to="{name:'market',query:{title:'likeYou'}}" class="nowBuy">立即购买</router-link>
+                <router-link :to="{name:'market',query:{title:'likeYou'}}" class="nowBuy" @click.native="addCart">立即购买</router-link>
             </div>
 		</div>
 	</div>
@@ -105,7 +105,7 @@ export default {
         addCart(){
             connect.$emit('addCart',this.num)
             shopTools.addUpdate({
-                id : this.shopDetails.id,
+                id : this.shopDetails.id || 1,
                 num : this.num
             })
             Toast({

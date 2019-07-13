@@ -12,8 +12,8 @@
                 <ul>
                     <li v-for="(item,index) in shopList" :key="index">
                         <div class="shop clearFix">
-                            <div class="pic fl"><img :src="item.imgUrl" alt="" width="100%" height="100%"></div>
-                            <div class="remove fr" v-if="isRemove"><i class="iconfont icon-lajitong"></i></div>
+                            <div class="pic fl"><img :src="item.imgUrl" alt="" width="100%" height="100%" v-lazy="item.imgUrl"></div>
+                            <div class="remove fr" v-if="isRemove"><i class="iconfont icon-lajitong" @click="removeShop(index)"></i></div>
                             <div class="shopInfo">
                                 <p class="desc" v-text="item.des || '请求数据失败'"></p>
                                 <div class="priceInfo clearFix">
@@ -22,9 +22,9 @@
                                         <span class="price" v-text="item.price || 'NaN'"></span>
                                     </p>
                                     <p class="fr addNum">
-                                        <a href="javascript:;" class="reduce" @click="reduce({id:item.id,num:-1})">-</a>
+                                        <a href="javascript:;" class="reduce" @click="reduce(index)">-</a>
                                         <a href="javascript:;" class="num">{{item.num}}</a>
-                                        <a href="javascript:;" class="add" @click="addCount">+</a>
+                                        <a href="javascript:;" class="add" @click="addCount(index)">+</a>
                                     </p>
                                 </div>
                             </div>
@@ -38,11 +38,11 @@
 		<footer class="totalPrice">
 			<p class="total">
 				<span>合计:</span>
-				<span class="totalMoney">￥888</span>
+				<span class="totalMoney">￥{{totalPrice.sum}}</span>
                 <span class="discount">优惠 ￥0.00</span>
 			</p>
 			<div class="Settlement">
-				<span class="count">结算</span><span class="num"> (2)</span>
+				<span class="count">结算</span><span class="num"> ({{totalPrice.num}})</span>
 			</div>
 		</footer>
 	</div>
@@ -55,39 +55,83 @@ export default {
 	data() {
 		return {
             shopList: [],
-            isRemove: false
+            isRemove: false,
+            // count: shopTools.getShopCount()
         }
 	},
-    components: {},
+    computed: {
+        totalPrice: function(){
+            let num = 0,sum = 0;
+            this.shopList.forEach((item)=>{
+                num += item.num;
+                sum += item.num * item.price;
+            })
+            return {num:num,sum:sum}
+        }
+    },
     methods:{
         manage(){
             this.isRemove = !this.isRemove;
         },
-        reduce(shop){
-            shopTools.addUpdate(shop);
-            console.log(shopTools.addUpdate(shop));
-            
+        reduce(i){
+            // console.log(i);
+            let shop = this.shopList[i];
+            if(shop.num>1){
+                shop.num--;
+                connect.$emit('addCart',-1);
+                shopTools.addUpdate({
+                    id : shop.id,
+                    num : -1
+                })
+            }
         },
-        addCount(){
-
+        addCount(i){
+            let shop = this.shopList[i];
+            shop.num++;
+            connect.$emit('addCart',1);
+            shopTools.addUpdate({
+                id : shop.id,
+                num : 1
+            })
+        },
+        removeShop(i){
+            let shop = this.shopList[i];
+            shopTools.delete(shop.id);
+            connect.$emit('addCart',-shop.num)
+            this.shopList.splice(i,1);
         }
     },
 	created() {
         connect.$emit('isIndex', true);
-        let shop = shopTools.getShop();
-        let idArr = Object.keys(shop);  // es6 遍历得到keys
-        let title = this.$route.query.title || 'likeYou'
-        idArr.forEach((item,index)=>{
-            let url ='http://tanzhouweb.com/vueProject/vue.php' + '?title=' + title + item
-            this.$ajax.get(url).then((res)=>{
-                    this.shopList.push(res.data);
-                    this.shopList.forEach((item,index)=>{
-                        //给shopList的 item添加属性num 
-                        this.$set(item,'num',shop[item.id]);
+        setTimeout(()=>{
+            let shop = shopTools.getShop();
+            let idArr = Object.keys(shop);  // es6 遍历得到keys
+            let title = this.$route.query.title || 'likeYou'
+            idArr.forEach((item,index)=>{
+                let url ='http://tanzhouweb.com/vueProject/vue.php' + '?title=' + title + item
+                this.$ajax.get(url).then((res)=>{
+                        this.shopList.push(res.data);
+                        this.shopList.forEach((item,index)=>{
+                            //给shopList的 item添加属性num 
+                            this.$set(item,'num',shop[item.id]);
+                        })
                     })
-                })
-        })
-        console.log(this.shopList);
+            })
+        },0)
+        // let shop = shopTools.getShop();
+        // let idArr = Object.keys(shop);  // es6 遍历得到keys
+        // let title = this.$route.query.title || 'likeYou'
+        // idArr.forEach((item,index)=>{
+        //     let url ='http://tanzhouweb.com/vueProject/vue.php' + '?title=' + title + item
+        //     this.$ajax.get(url).then((res)=>{
+        //             this.shopList.push(res.data);
+        //             this.shopList.forEach((item,index)=>{
+        //                 //给shopList的 item添加属性num 
+        //                 this.$set(item,'num',shop[item.id]);
+        //             })
+        //         })
+        // })
+        // console.log(this.shopList);
 
 
 	}
@@ -99,7 +143,7 @@ export default {
 
 .high {
 	padding: 0 75/4 / @rem;
-	background-color: #f7f7fa;
+	// background-color: #f7f7fa;
 	header {
 		height: 105 / @rem;
 		border-bottom: 0.5px solid #f5f5f9;
@@ -127,7 +171,7 @@ export default {
 		}
     }
     .content{
-        margin-top: 20 /@rem;
+        margin: 20 /@rem 0 230 /@rem;
         ul li{
             width: 100%;
             border-radius: 10 / @rem;
@@ -189,8 +233,6 @@ export default {
             }
         }
     }
-
-
 	.totalPrice {
 		position: fixed;
 		bottom: 100 / @rem;
