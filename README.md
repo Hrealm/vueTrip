@@ -8,7 +8,7 @@
 
 ## 部分截图
 
-<img src="src/node/img/result/1.jpg" width="15%" height="15%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/2.jpg" width="15%" height="15%"/>
+<img src="src/node/img/result/1.jpg" width="20%" height="20%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/2.jpg" width="20%" height="20%"/>
 
 <img src="src/node/img/result/3.jpg" width="30%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/4.jpg" width="30%" height="30%"/>
 
