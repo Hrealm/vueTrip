@@ -8,7 +8,15 @@
 
 ## 部分截图
 
+<<<<<<< HEAD
 <img src="src/node/img/result/vueTrip.gif" width="30%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/tripCart.gif" width="30%" height="30%"/>
+=======
+<img src="src/node/img/result/1.jpg" width="20%" height="20%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/2.jpg" width="20%" height="20%"/>
+
+<img src="src/node/img/result/3.jpg" width="30%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/4.jpg" width="30%" height="30%"/>
+
+<img src="src/node/img/result/5.jpg" width="30%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/6.jpg" width="30%" height="30%"/>
+>>>>>>> 2178eab71777c7e9c1dad918972633a737693a73
 
 ## Build Setup
 
