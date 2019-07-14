@@ -1,4 +1,4 @@
-# sparrow-app
+# trip-app
 
 > 未完，正在努力更新中...
 >
