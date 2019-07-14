@@ -56,7 +56,6 @@ export default {
 		return {
             shopList: [],
             isRemove: false,
-            // count: shopTools.getShopCount()
         }
 	},
     computed: {
