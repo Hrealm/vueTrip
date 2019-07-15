@@ -6,24 +6,34 @@
 >
 > A  super simple flat style trip app
 
-## 部分截图
+## Partial Screenshot
 
 <img src="src/node/img/result/vueTrip.gif" width="30%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/tripCart.gif" width="30%" height="30%"/>
 
 ## Build Setup
 
 ``` bash
+# clone project
+git clone git@github.com:Hrealm/vueTrip.git
+
+# enter project folder
+cd vueTrip
+
 # install dependencies
 npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
+```
+## Start Local Server
 
-# build for production and view the bundle analyzer report
-npm run build --report
+```bash
+# enter project folder
+cd src/node/
+
+# start node
+node node.js
+
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
