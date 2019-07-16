@@ -29,11 +29,9 @@ npm run dev
 ## Start Local Server
 
 ```bash
-# enter project folder
-cd src/node/
 
-# start node
-node node.js
+# start node server at localhost:8181
+node ./src/node/node.js
 
 ```
 
