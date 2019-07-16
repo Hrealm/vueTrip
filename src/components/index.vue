@@ -15,37 +15,6 @@
         <!-- header -->
 
 		<!-- banner -->
-        <!-- 初始化图片，没有服务器的一种暴力解决方法 -->
-        <div style="display: none;">
-             <!-- index -->
-            <img src="../node/img/banner/1.jpg" alt="">
-            <img src="../node/img/banner/2.jpg" alt="">
-            <img src="../node/img/banner/3.jpg" alt="">
-            <img src="../node/img/indexHot/1.png" alt="">
-            <img src="../node/img/indexHot/2.png" alt="">
-            <img src="../node/img/indexHot/3.png" alt="">
-            <img src="../node/img/indexShare/1.jpg" alt="">
-            <img src="../node/img/indexShare/2.jpg" alt="">
-            <img src="../node/img/indexShare/3.jpg" alt="">
-            <!-- find -->
-            <img src="../node/img/find/recommend/Hrealm/head.jpg" alt="">
-            <img src="../node/img/find/recommend/Hrealm/1.jpg" alt="">
-            <img src="../node/img/find/recommend/Hrealm/2.jpg" alt="">
-            <img src="../node/img/find/recommend/Hrealm/3.jpg" alt="">
-            <img src="../node/img/find/recommend/Hrealm/4.jpg" alt="">
-            <img src="../node/img/find/recommend/ECHO/head.jpg" alt="">
-            <img src="../node/img/find/recommend/ECHO/1.jpg" alt="">
-            <img src="../node/img/find/recommend/ECHO/2.jpg" alt="">
-            <img src="../node/img/find/recommend/ECHO/3.jpg" alt="">
-            <img src="../node/img/find/recommend/ECHO/4.jpg" alt="">
-            <img src="../node/img/find/recommend/ECHO/5.jpg" alt="">
-            <img src="../node/img/find/recommend/annie/head.png" alt="">
-            <img src="../node/img/find/recommend/annie/1.jpg" alt="">
-            <img src="../node/img/find/recommend/annie/2.jpg" alt="">
-            <img src="../node/img/find/recommend/annie/3.jpg" alt="">
-            <img src="../node/img/find/recommend/annie/4.jpg" alt="">
-
-        </div>
 		<mt-swipe :auto="4000" :class="[banner]">
 			<mt-swipe-item v-for="(item,index) in bannerImg" :key="index">
                 <img class="bannerImg" :src="item.picUrl" alt="" width="100%" height="100%">
