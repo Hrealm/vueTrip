@@ -30,7 +30,7 @@ npm run dev
 
 ```bash
 
-# start node server at localhost:8181
+# start node server at localhost:8008
 node ./src/node/node.js
 
 ```
