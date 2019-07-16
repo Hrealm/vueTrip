@@ -14,8 +14,8 @@ Vue.component('titleBar',TitleBar)
 
 //导入插件axios 挂载属性 vue.prototype
 import Axios from 'axios'
-Axios.defaults.baseURL = 'http://localhost:6789/'
-// Axios.defaults.baseURL = 'http://10.4.135.143:6789/'
+Axios.defaults.baseURL = 'http://localhost:8008/'
+// Axios.defaults.baseURL = 'http://10.4.135.143:8008/'
 Vue.prototype.$ajax = Axios
 
 //导入jQuery

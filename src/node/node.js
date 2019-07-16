@@ -178,6 +178,6 @@ server.on('request', function (req, res) { // request请求 response返回响应
 
 });
 
-server.listen(6789, function () {
+server.listen(8008, function () {
     console.log('服务器启动成功了')
 });
