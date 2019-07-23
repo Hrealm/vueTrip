@@ -35,3 +35,5 @@ node ./src/node/node.js
 
 ```
 
+## License
+
