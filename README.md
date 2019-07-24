@@ -37,4 +37,4 @@ node ./src/node/node.js
 
 ## License
 
-[MIT-License](https://en.wikipedia.org/wiki/MIT_License)
+[MIT](https://github.com/Hrealm/vueTrip/blob/master/LICENSE)
