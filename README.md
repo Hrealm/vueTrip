@@ -1,6 +1,6 @@
 # vueTrip
 
-> 未完，正在努力更新中...
+> 未完，部分模块更新中...
 >
 > 由于服务器过期，临时采用node搭建本地服务器提供后台数据接口
 >
@@ -37,3 +37,4 @@ node ./src/node/node.js
 
 ## License
 
+[MIT-License](https://en.wikipedia.org/wiki/MIT_License)
