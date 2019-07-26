@@ -8,7 +8,7 @@
 
 ## Partial Screenshot
 
-<img src="src/node/img/result/vueTrip.gif" width="30%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/tripCart.gif" width="30%" height="30%"/>
+<img src="src/node/img/result/vueTrip.gif" width="29%" height="30%"/>&emsp;&emsp;&emsp;&emsp;<img src="src/node/img/result/tripCart.gif" width="30%" height="30%"/>
 
 ## Build Setup
 
