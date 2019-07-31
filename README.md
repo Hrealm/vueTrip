@@ -1,10 +1,13 @@
 # vueTrip
 
+A  super simple flat style trip app
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Hrealm/vueTrip/blob/master/LICENSE)
+
 > 未完，部分模块待更新...
 >
 > 由于服务器过期，临时采用node搭建本地服务器提供后台数据接口
 >
-> A  super simple flat style trip app
 
 ## Partial Screenshot
 
