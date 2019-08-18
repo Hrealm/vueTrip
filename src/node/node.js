@@ -37,6 +37,18 @@ server.on('request', function (req, res) { // request请求 response返回响应
             {
                 id: 3,
                 picHot: '../static/img/3.fe55348.png'
+            },
+            {
+                id: 4,
+                picHot: '../static/img/1.4dc0732.png'
+            },
+            {
+                id: 5,
+                picHot: '../static/img/2.e2eab8a.png'
+            },
+            {
+                id: 6,
+                picHot: '../static/img/3.fe55348.png'
             }
         ],
         indexShare: [
