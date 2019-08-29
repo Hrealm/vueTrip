@@ -11,7 +11,7 @@
 					:key="index"
 					@click="getContent(item.tip)"
 					v-text="item.title"
-					:class="item.id===1? 'tbActive' :''"
+					:class="item.tip === activeTitle ? 'tbActive' :''"
 				></span>
 			</div>
 		</header>
@@ -19,9 +19,10 @@
 
 		<!-- content -->
 		<div class="content">
-			<div class="conlist recommend" :class="'show'">
-				<ul>
-					<li v-for="(item,index) in recommend" :key="index">
+			<div class="conlist recommend">
+				<ul v-for="(item,index) in contentList" :key="index" 
+                :style="index === activeTitle ? 'display: block;' : 'display: none;'">
+					<li v-for="(item,index) in item" :key="index">
 						<div class="userInfo clearFix">
 							<p class="fl">
 								<img :src="item.userHead" width="100%" height="100%" alt>
@@ -43,7 +44,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="conlist findHot">
+			<!-- <div class="conlist findHot">
 				<ul>
 					<li v-for="(item,index) in findHot" :key="index">
 						<div class="userInfo clearFix">
@@ -90,7 +91,7 @@
 						</div>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 		<!-- content -->
 	</div>
@@ -101,10 +102,12 @@ import connect from '../common/connect'
 export default {
 	data() {
 		return {
-			tabNav: [],
-            recommend: [],
-            findHot: [],
-            follow: []
+            tabNav: [],
+            activeTitle: 'recommend',
+            contentList: {},
+            // recommend: [],
+            // findHot: [],
+            // follow: []
 		}
 	},
 	components: {},
@@ -117,34 +120,42 @@ export default {
                 console.log(err);
             })
         }
-        this.getContent('recommend');
+        this.$ajax.get('contentList').then((res)=>{
+                this.contentList = res.data;
+                // console.log(this.contentList);
+            })
+        // this.getContent('recommend');
         connect.$emit('isIndex',true);
 	},
 	methods: {
-		getContent(title) {
-			this.$ajax.get(title).then(res => {
-                this[title] = res.data
-                this.tabActive();
-			}).catch((err)=>{
-                console.log(err);
-            })
-		},
-		tabActive() {
-            let $tabItem = this.$('.topTab')
-            let $conlist = this.$('.conlist')
-            for (let i = 0; i < $tabItem.length; i++) {
-                $tabItem[i].index = i;
-                $tabItem[i].onclick = function () {
-                    for (let i = 0; i < $tabItem.length; i++) {
-                        $tabItem[i].className = '';
-                        $conlist[i].style.display = 'none';
-                    }
-                    $tabItem[this.index].className = 'tbActive';
-                    $conlist[this.index].style.display = 'block';
-                }
-            }
-            
+        getContent(title){
+            this.activeTitle = title;
         }
+
+		// getContent(title) {
+		// 	this.$ajax.get(title).then(res => {
+        //         this[title] = res.data
+        //         this.tabActive();
+		// 	}).catch((err)=>{
+        //         console.log(err);
+        //     })
+		// },
+		// tabActive() {
+        //     let $tabItem = this.$('.topTab')
+        //     let $conlist = this.$('.conlist')
+        //     for (let i = 0; i < $tabItem.length; i++) {
+        //         $tabItem[i].index = i;
+        //         $tabItem[i].onclick = function () {
+        //             for (let i = 0; i < $tabItem.length; i++) {
+        //                 $tabItem[i].className = '';
+        //                 $conlist[i].style.display = 'none';
+        //             }
+        //             $tabItem[this.index].className = 'tbActive';
+        //             $conlist[this.index].style.display = 'block';
+        //         }
+        //     }
+            
+        // }
 	}
 }
 </script>
@@ -186,7 +197,7 @@ export default {
 		width: 100%;
 		margin-top: 20 / @rem;
 		.conlist {
-			display: none;
+			// display: none;
 			padding-bottom: 100 / @rem;
 			ul li {
 				width: 100%;
@@ -238,9 +249,9 @@ export default {
 				}
 			}
 		}
-		.conlist.show {
-			display: block;
-		}
+		// .conlist.show {
+		// 	display: block;
+		// }
 	}
 }
 </style>

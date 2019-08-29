@@ -117,7 +117,7 @@ export default {
         this.$ajax.get('indexHot')
             .then((res)=>{
                 this.hotImg =res.data
-                console.log(res.data)
+                // console.log(res.data)
             })
         this.$ajax.get('indexShare')
             .then((res)=>{
